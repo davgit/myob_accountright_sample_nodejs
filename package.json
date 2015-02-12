@@ -1,15 +1,23 @@
 {
   "name": "myobapi-sample",
   "version": "0.0.1",
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon app.js"
+  },
   "dependencies": {
-    "express": "3.2.4",
-    "jade": "*",
     "connect": "*",
+    "express": "3.2.4",
+    "express-session": "^1.10.2",
+    "jade": "*",
+    "node-uuid": "^1.4.2",
     "oauth": "*"
   },
   "license": "MIT",
   "engines": {
     "node": "0.8.x",
     "npm": "1.2.x"
+  },
+  "devDependencies": {
+    "nodemon": "^1.3.7"
   }
 }

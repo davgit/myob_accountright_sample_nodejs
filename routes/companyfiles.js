@@ -7,9 +7,10 @@ exports.list = function(req, res){
     port: 443,
     path: '/accountright/',
     method : 'GET',
-    headers : { 'Authorization' : 'Bearer ' + req.session.access_token, 
+    headers : { 
+      'Authorization' : 'Bearer ' + req.session.access_token, 
       'x-myobapi-key' : res.app.settings['myob credentials'].clientId, 
-      'Content-Type' : 'application/json' 
+      'Content-Type'  : 'application/json' 
     }
   };
     
@@ -32,5 +33,4 @@ exports.list = function(req, res){
   request.on('error', function(e) {
     res.send({error:e});
   });
-
 };

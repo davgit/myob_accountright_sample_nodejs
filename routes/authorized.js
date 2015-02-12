@@ -30,9 +30,8 @@ exports.authorized = function(req, res){
         res.redirect('/companyfiles');
       } else {
          console.log(e);
-       res.send({error: e});
+         res.send({error: e});
       }
     });
-    
   }
 };

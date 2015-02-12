@@ -12,10 +12,13 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
+
+var session = require('express-session');
+var uuid = require('node-uuid');
+
 var app = express();
 
 app.configure(function(){
-  var MemoryStore = require('connect').session.MemoryStore;
   app.set('port', port);
   app.set('myob credentials', {clientId: clientId, clientSecret: clientSecret, redirectUri: redirectUri});
   app.set('views', __dirname + '/views');
@@ -24,13 +27,13 @@ app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.cookieParser());
-  app.use(express.methodOverride());
-  app.use(express.session({
-    secret:'sea-anemone',
-    store: new MemoryStore({ 
-        reapInterval: 60000 * 10
-      })
-    }));
+  app.use(express.methodOverride());  
+  app.use(session({
+    genid             : function(req) { return uuid.v4(); },
+    secret            : 'rage calm',
+    resave            : false,
+    saveUninitialized : false
+  }))
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
